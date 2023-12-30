@@ -27,4 +27,8 @@ cmake \
 make -j${CPU_COUNT}
 make install
 
+# Replace sysroot paths in CMake files
+sed -i 's|_build_env/x86_64-conda-linux-gnu/sysroot|$BUILD_PREFIX/path|g' $PREFIX/share/cmake/medfile-${PKG_VERSION}/MEDFileTargets.cmake
+
+
 popd
