@@ -6,6 +6,7 @@ rem fortran support is currently disabled on windows using 'disable-fortran.patc
 rem so the following 2 lines are commented out
 rem set FCFLAGS=-fdefault-integer-8 %FCFLAGS%
 rem set FFLAGS=-fdefault-integer-8 %FFLAGS%
+set FC=flang-new
 
 cmake -G "Ninja" ^
   %CMAKE_ARGS% ^

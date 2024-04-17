@@ -25,7 +25,7 @@ source:
     # https://github.com/HDFGroup/hdf5/issues/3797
     - patches/ignore-hdf5-bounds-check-cmake.patch
     - patches/ignore-hdf5-bounds-check-source.patch
-    - patches/disable-fortran.patch  # [win]
+#    - patches/disable-fortran.patch  # [win]
     - patches/do_not_modify_windows_path.patch
     - patches/install-in-runtime-and_archive.patch
     # without this patch, OSX finds the system python since it is a newer version
@@ -59,7 +59,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}           # [not win]
+    - {{ compiler('fortran') }}
     - swig >=4.0.2
     - cmake
     - ninja                               # [win]
