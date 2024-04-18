@@ -4,9 +4,11 @@ mkdir build
 cd build
 rem fortran support is currently disabled on windows using 'disable-fortran.patch',
 rem so the following 2 lines are commented out
-rem set FCFLAGS=-fdefault-integer-8 %FCFLAGS%
-rem set FFLAGS=-fdefault-integer-8 %FFLAGS%
+REM set FCFLAGS=-fdefault-integer-8 %FCFLAGS%
+REM set FFLAGS=-fdefault-integer-8 %FFLAGS%
 set FC=flang-new
+REM set LDFLAGS=%LDFLAGS% msvcrt.lib
+set FFLAGS=%FCFLAGS% -fms-runtime-lib=dll
 
 cmake -G "Ninja" ^
   %CMAKE_ARGS% ^
