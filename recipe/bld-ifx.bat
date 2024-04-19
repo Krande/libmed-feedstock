@@ -6,9 +6,11 @@ rem fortran support is currently disabled on windows using 'disable-fortran.patc
 rem so the following 2 lines are commented out
 REM set FCFLAGS=-fdefault-integer-8 %FCFLAGS%
 REM set FFLAGS=-fdefault-integer-8 %FFLAGS%
-set FC=flang-new
-REM set LDFLAGS=%LDFLAGS% /LIBPATH:%PREFIX%/lib msvcrt.lib
-set FFLAGS=%FCFLAGS% -fms-runtime-lib=dll
+
+set "INTEL_VARS_PATH=C:\Program Files (x86)\Intel\oneAPI\compiler\latest\env"
+@call "%INTEL_VARS_PATH%\vars.bat" -arch intel64 vs2022
+set FC=ifx
+set FFLAGS=%FFLAGS% /fpp /MD
 
 cmake -G "Ninja" ^
   %CMAKE_ARGS% ^
