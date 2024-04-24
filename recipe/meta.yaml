@@ -35,7 +35,8 @@ source:
     - patches/cmake-modern-python.patch  # [win]
     - patches/do-not-make-symlinks-on-windows.patch
     - patches/link-privately.patch
-    - patches/fix_flang_fortran.patch
+    - patches/fix_flang_fortran.patch     # [win]
+    - patches/fix_medfwrap_symbols.patch  # [win]
 
 build:
   number: {{ build }}
@@ -84,12 +85,13 @@ test:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   files:
-    - tests
+    - test_symbols.bat  # [win]
   imports:
     - med
   commands:
     - test -f ${PREFIX}/lib/libmed${SHLIB_EXT}                   # [unix]
     - nm ${PREFIX}/lib/libmedC.so | grep MEDlibraryNumVersion    # [linux]
+    - test_symbols.bat                                           # [win]
 
 about:
   home: https://www.salome-platform.org/user-section/about/med

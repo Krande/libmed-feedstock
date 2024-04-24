@@ -9,6 +9,7 @@ REM set FFLAGS=-fdefault-integer-8 %FFLAGS%
 
 set "INTEL_VARS_PATH=C:\Program Files (x86)\Intel\oneAPI\compiler\latest\env"
 @call "%INTEL_VARS_PATH%\vars.bat" -arch intel64 vs2022
+
 set FC=ifx
 set FFLAGS=%FFLAGS% /fpp /MD
 
