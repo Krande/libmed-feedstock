@@ -10,8 +10,11 @@ REM set FFLAGS=-fdefault-integer-8 %FFLAGS%
 set "INTEL_VARS_PATH=C:\Program Files (x86)\Intel\oneAPI\compiler\latest\env"
 @call "%INTEL_VARS_PATH%\vars.bat" -arch intel64 vs2022
 
+:: This updates the symbols to lowercase and adds an underscore
+python %RECIPE_DIR%\mangling_fix.py --ifile=%RECIPE_DIR%\medfwrap_symbols.def.in --ofile=%SRC_DIR%\src\medfwrap_symbols.def.in
+
 set FC=ifx
-set FFLAGS=%FFLAGS% /fpp /MD
+set FFLAGS=%FFLAGS% /fpp /MD /names:lowercase /assume:underscore
 
 cmake -G "Ninja" ^
   %CMAKE_ARGS% ^
